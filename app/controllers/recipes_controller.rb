@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +65,6 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title)
+      params.require(:recipe).permit(:title, :category_id)
     end
 end
